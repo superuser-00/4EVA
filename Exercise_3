@@ -1,170 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Profile - GET Example</title>
-  <style>       
-    body {
-      background-color: #f9fafb;
-      padding: 1rem;
-      font-family: Arial, sans-serif;
-    }
-
-    h1 {
-      font-size: 1.875rem;
-      font-weight: 700;
-      text-align: center;
-      color: #000000;
-      margin-bottom: 0.5rem;
-    }
-
-    p.subtitle {
-      text-align: center;
-      color: #4b5563;
-      margin-bottom: 2rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.1);
-      text-align: center;
-    }
-
-    .member-img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
-
-    .role {
-      color: #3b82f6;
-      margin-bottom: 0.75rem;
-      font-weight: bold;
-    }
-
-    .quote {
-      color: #000;
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .card a {
-      color: #2563eb;
-      text-decoration: none;
-    }
-
-    .card a:hover {
-      text-decoration: underline;
-    }
-
-    .form-box {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>GET Method Example</title>
 </head>
 <body>
-  <div style="max-width: 80rem; margin: 0 auto;">
-    <h1>GROUP 4EVER</h1>
-    <p class="subtitle"><strong>Working together to achieve great things</strong></p>
-
-    
-    <div class="form-box">
-      <form method="get" action="">
-        <label for="member">Enter Member Name: </label>
-        <input type="text" name="member" id="member" placeholder="e.g. Denmark">
-        <input type="submit" value="Search">
-      </form>
-    </div>
-
-    <div class="grid">
-    <?php
-     
-      $members = [
-        "denmark" => [
-          "img" => "images/den.jpeg",
-          "name" => "John Denmark Ambrocio",
-          "role" => "Team Leader",
-          "quote" => "Tara rides",
-          "phone" => "9942238064",
-          "github" => "https://github.com/superuser-00",
-          "gmail" => "mailto:ambrociojohndenmark_bsit@plmun.edu.ph",
-          "facebook" => "https://www.facebook.com/share/19pGzPpyDu/"
-        ],
-        "charles" => [
-          "img" => "images/di.png",
-          "name" => "Charles Diaz",
-          "role" => "Member",
-          "quote" => "生き甲斐",
-          "phone" => "9943374793",
-          "github" => "https://github.com/kenZaid",
-          "gmail" => "mailto:diazcharleskenneth_bsit@plmun.edu.ph",
-          "facebook" => "https://www.facebook.com/share/1C1ochZZNi/"
-        ],
-        "rainier" => [
-          "img" => "images/ran.jpeg",
-          "name" => "Rainier Gatdula",
-          "role" => "Member",
-          "quote" => "Eat. Sleep. Code. Cry. Repeat.",
-          "phone" => "9351937943",
-          "github" => "https://github.com/RainierGatdula",
-          "gmail" => "mailto:gatdularainierpaul_bsit@plmun.edu.ph",
-          "facebook" => "https://www.facebook.com/share/1DH2SeJq14/"
-        ],
-        "patrick" => [
-          "img" => "images/jp.jpg",
-          "name" => "John Patrick J. Garcia",
-          "role" => "Member",
-          "quote" => "Philippians 4:13 Omnia possum in eo qui me confortat.",
-          "phone" => "9610626066",
-          "github" => "https://github.com/JohnPatrickJGarcia",
-          "gmail" => "mailto:garciajohnpatrick_bsit@plmun.edu.ph",
-          "facebook" => "https://www.facebook.com/share/1FZjYrb4WK/"
-        ]
-      ];
-
+    <h1>GET Method</h1>
+    <form method="get" action="">
       
-      function showCard($m) {
-        echo "
-        <div class='card'>
-          <img src='{$m['img']}' alt='{$m['name']}' class='member-img'>
-          <h3><em>{$m['name']}</em></h3>
-          <p class='role'>{$m['role']}</p>
-          <p class='quote'>\"{$m['quote']}\"</p>
-          <p>📞 {$m['phone']}</p>
-          <p>🌐 <a href='{$m['github']}' target='_blank'>GitHub</a></p>
-          <p>✉️ <a href='{$m['gmail']}'>Gmail</a></p>
-          <p>📘 <a href='{$m['facebook']}' target='_blank'>Facebook</a></p>
-        </div>";
-      }
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required />
 
-   
-      if (isset($_GET['member']) && $_GET['member'] != "") {
-        $search = strtolower(trim($_GET['member']));
-        if (array_key_exists($search, $members)) {
-          showCard($members[$search]);
-        } else {
-          echo "<p style='text-align:center; color:red;'>No member found with that name.</p>";
-        }
-      } else {
-     
-        foreach ($members as $m) {
-          showCard($m);
-        }
-      }
+        <br /><br />
+
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <br /><br />
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php
+    if (isset($_GET['name']) && isset($_GET['email'])) {
+        $name = htmlspecialchars($_GET['name']);
+        $email = htmlspecialchars($_GET['email']);
+        echo "<p>Hello, $name!</p>";
+        echo "<p>Your email address is: $email</p>";
+    }
     ?>
-    </div>
-  </div>
 </body>
 </html>
