@@ -21,11 +21,11 @@
     <button type="submit">Submit</button>
   </form>
 
-  <!-- Optional: Show result after submission -->
+  
   <div id="result"></div>
 
   <script>
-    // If you want to intercept the POST and handle via JavaScript (AJAX)
+    
     document.querySelector('form').addEventListener('submit', function(e) {
       e.preventDefault(); // stop default form submission
 
